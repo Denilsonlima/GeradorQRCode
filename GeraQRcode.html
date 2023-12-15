@@ -1,0 +1,104 @@
+<html>
+    <head>
+        <title>Gerador de QRCode</title>
+
+    <style>
+
+      body{
+
+        margin: 0%;
+
+      }
+
+      .form{
+
+        background-color: green;
+        width: 300px;
+        height: 100px;
+        margin-left:40%;
+        margin-top:50px;
+        border-radius: 5px;
+        padding:0%, 20px,20px,20px,20px;
+
+      }
+
+      legend{
+        text-align: center;
+        font-size: 18px;
+        margin-bottom: 20px;
+        background: linear-gradient(green,chartreuse);
+
+      }
+      .txt_url{
+
+        margin-left: 30px;
+        border-style: none;
+        border-radius: 5px;
+        width: 60%;
+
+
+      }
+
+      .qrcode{
+
+        margin-left: 23px;
+        margin-top: 50px;
+
+      }
+
+      .bt_gerar{
+
+        border-style: none;
+        background-color: chartreuse;
+        border-radius: 5px;
+
+      }
+
+      .bt_gerar:hover{
+
+        border-style: none;
+        background-color:darkgreen;
+        border-radius: 5px;
+      }
+
+  </style>
+
+    </head>
+<body>
+<!--Biblioteca-->
+<script src="http://localhost/GeradordeQRcode/bibliotecaqrcode.js"></script>
+
+<div class="form">
+  <legend>Gerador de QRCode</legend>
+  <form>
+    <input type="url" id="txt_url" class="txt_url" name="txt_url" placeholder="Informe a URL" required />
+    <button type="button" class="bt_gerar" onclick="geraQRCode()">Gerar</button>
+  </form>
+  <h4>QRCode:</h4>
+
+  <span>
+    <div id="qrcode" class="qrcode"></div>
+  </div>
+<span>
+
+ <!--JavaScript acionado pelo click do botão Gerar--> 
+  <script type="text/javascript">
+
+    /*Função para gerar QRCode*/
+    function geraQRCode() {
+      let txt_url = document.getElementById("txt_url").value;
+      if (txt_url) {
+        let qrcodeContainer = document.getElementById("qrcode");
+        qrcodeContainer.innerHTML = "";
+        new QRCode(qrcodeContainer, txt_url);
+        /*With some styles*/
+        document.getElementById("qrcode-container").style.display = "block";
+    /*Alerta caso não seja passado valor no campo url do formulário*/
+      } else {
+        alert("Por favor informe a URL que deseja gerar o QRCode");
+      }
+    }
+  </script>
+</div>
+</body>
+</html>
